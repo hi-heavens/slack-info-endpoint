@@ -2,7 +2,9 @@ exports.getPersonalDetails = (req, res) => {
   const { slack_name, track } = req.query;
   try {
     const current_day = new Date().toLocaleString("en-US", { weekday: "long" });
-    const utc_time = new Date().toISOString();
+
+    const utc_time = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
+
     const github_file_url =
       "https://github.com/hi-heavens/slack-info-endpoint/blob/main/server.js";
     const github_repo_url = "https://github.com/hi-heavens/slack-info-endpoint";
